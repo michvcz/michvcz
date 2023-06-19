@@ -1,0 +1,127 @@
+<<!DOCTYPE html>
+<html>
+<head>
+  <title>Galeria - moje niedawne połowy</title>
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #A2D9CE;
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #000;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: auto;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery img.active {
+      transform: scale(1.2);
+    }
+      
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    #lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #footer {
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #76D7C4;
+      border: 1px solid #000;
+    }
+
+    h1 {
+      background-color: #ABEBC6;
+      color: #5DADE2;
+      text-align: center;
+      padding: 10px;
+      margin: 20px;
+    }
+  </style>
+  <a href="blog.html">Powrót do strony głównej</a>
+</head>
+<body style="background-color: #76D7C4;">
+  <h1>Galeria - moje niedawne połowy</h1>
+  <div class="gallery">
+    <img src="linwtoni.jpg" alt="Zdjęcie 1">
+    <img src="jasnylin.jpg" alt="Zdjęcie 2">
+    <img src="ciemnylin.jpg" alt="Zdjęcie 3">
+      
+    <img src="karpwszoku.jpg" alt="Zdjęcie 4">
+    <img src="masakarpi.jpg" alt="Zdjęcie 5">
+    <img src="karpkoi.jpg" alt="Zdjęcie 6">
+      
+    <img src="szczupak.jpg" alt="Zdjęcie 7">
+    <img src="losos.jpg" alt="Zdjęcie 8">
+    <img src="plotkazima.jpg" alt="Zdjęcie 9">
+      
+    <img src="jesiotrnamacie.jpg" alt="Zdjęcie 10">
+    <img src="minijesiotr.jpg" alt="Zdjęcie 11">
+    <img src="sumolimpijczyk.jpg" alt="Zdjęcie 12">
+
+  </div>
+
+  <div id="lightbox">
+    <img src="" alt="Pełnoekranowe zdjęcie">
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    images.forEach(image => {
+      image.addEventListener('click', () => {
+
+        image.classList.add('active');
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        lightboxImg.src = image.src;
+
+        lightbox.classList.add('active');
+      });
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('click', () => {
+        
+      lightbox.classList.remove('active');
+
+
+      images.forEach(image => {
+        image.classList.remove('active');
+      });
+    });
+  </script>
+
+  <div id="footer">
+    &copy; Okiem Wędkarza 2023
+  </div>
+</body>
+</html>
